@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
-const routes = require('./routes/admin')
+const routes = require('./routes/routes')
 
 const dbUser = process.env.DB_USER
 const dbPassword = process.env.DB_PASSWORD
@@ -15,9 +15,12 @@ app.use(express.urlencoded({
 
 app.use(express.json())
 
+let cors = require("cors");
+app.use(cors());
 
 
-app.use('/createAccount', routes) 
+app.use('/register', routes)
+app.use('/accounts', routes)
 
 
 
