@@ -1,6 +1,9 @@
 const express = require('express')
 const router = express.Router()
+
+// Models
 const Account = require('../models/account')
+const EspData = require('../models/espData')
 
 
 router.post("/", async (req, res) => {
@@ -22,29 +25,27 @@ router.post("/", async (req, res) => {
     }
 })
 
-router.get("/:email/:password/:name", async (req, res) => {
-    console.log("aqui aqui aqui: " + req.params.email)
+router.get("/:data", async (req, res) => {
+    console.log("aqui aqui aqui: " + req.params.data)
 
-    const email = req.params.email
-    const password = req.params.password
-    const name = req.params.name
+    const data = req.params.data
 
-    const account = {
-        email,
-        password,
-        name
+    const espData = {
+        data
     }
+    const espdatas = await EspData.findOne({data: req.params.data}) 
 
     try {
-        const accounts = await Account.findOne({email: req.params.email})    
-        if(accounts){
-            console.log('deu certo')
-            await Account.create(account)
-            console.log("Account created")
-            res.send("1")
+           
+        if(espdatas){
+            console.log('Parametro indica que ja existe tais resultados no mongodb')
+            res.send("Parametro indica que ja existe tais resultados no mongodb")
+            
         }else{
             console.log('not today')
-            res.send('not today')
+            await EspData.create(espData)
+            console.log("Account created")
+            res.send('Account created')
         }
         
     } catch (error) {
