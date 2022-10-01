@@ -23,9 +23,8 @@ router.post("/", async (req, res) => {
 })
 
 router.get("/:email", async (req, res) => {
-    console.log("aqui aqui aqui")
-    const account = await Account.findOne({email: req.params.email})
-    console.log(typeof account)
+    console.log("aqui aqui aqui: " + req.params.email)
+    const account = await Account.findOne({email: req.params.email})    
     res.send(account)
 })
 
@@ -35,17 +34,6 @@ router.get("/", async (req, res) => {
 
     const accounts = await Account.find() // Procura pelo email que vai chegar do (nao mais)
                                                             // formulario react.
-    /* if(accounts == null){
-        res.json({login: "no"})
-        console.log("passei 1")
-    }else if(email == accounts.email && password == accounts.password){
-        console.log(accounts)
-        console.log("passei 2")
-        res.json({login: "yes"})
-    }else{
-        console.log("passei 3")
-        
-    } */
     res.json(accounts)
 })
 

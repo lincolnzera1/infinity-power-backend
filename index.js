@@ -21,6 +21,7 @@ app.use(cors());
 
 app.use('/register', routes)
 app.use('/accounts', routes)
+app.use('/teste', routes)
 
 
 
@@ -30,7 +31,7 @@ app.use("/", (req, res) => {
 
 
 mongoose.connect(mongoUrl).then(() => {
-    app.listen( process.env.PORT, () => console.log('Everything is all right my master'))
+    app.listen( process.env.PORT || 3000, () => console.log('Everything is all right my master'))
 }).catch((erro) => {
     console.log("O Erro foi: " + erro)
 })
