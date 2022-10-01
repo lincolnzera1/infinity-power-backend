@@ -7,7 +7,7 @@ const routes = require('./routes/routes')
 const dbUser = process.env.DB_USER
 const dbPassword = process.env.DB_PASSWORD
 
-const mongoUrl = `mongodb+srv://guilherme:xJ8ansyXDo3PzTFO@cluster0.jiz8pb1.mongodb.net/infinityPower?retryWrites=true&w=majority`
+const mongoUrl = `mongodb+srv://${dbUser}:${dbPassword}@cluster0.jiz8pb1.mongodb.net/infinityPower?retryWrites=true&w=majority`
 
 app.use(express.urlencoded({
     extended: true
@@ -25,7 +25,6 @@ app.use('/accounts', routes)
 
 
 app.use("/", (req, res) => {
-    console.log("right")
     res.send("Wellcome again my friend.")
  }) 
 
