@@ -22,16 +22,36 @@ router.post("/", async (req, res) => {
     }
 })
 
-router.get("/:email", async (req, res) => {
+router.get("/:email/:password/:name", async (req, res) => {
     console.log("aqui aqui aqui: " + req.params.email)
-    const account = await Account.findOne({email: req.params.email})    
-    if(account){
-        console.log('deu certo')
-        res.send(account)
-    }else{
-        console.log('not today')
-        res.send('not today')
+
+    const email = req.params.email
+    const password = req.params.password
+    const name = req.params.name
+
+    const account = {
+        email,
+        password,
+        name
     }
+
+    try {
+        const accounts = await Account.findOne({email: req.params.email})    
+        if(accounts){
+            console.log('deu certo')
+            await Account.create(account)
+            console.log("Account created")
+            res.send("1")
+        }else{
+            console.log('not today')
+            res.send('not today')
+        }
+        
+    } catch (error) {
+        console.log("An error happened, and the account can't be created.")
+        res.send("2")
+    }
+    
 })
 
 router.get("/", async (req, res) => {
