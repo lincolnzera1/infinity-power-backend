@@ -22,6 +22,13 @@ router.post("/", async (req, res) => {
     }
 })
 
+router.get("/:email", async (req, res) => {
+    console.log("aqui aqui aqui")
+    const account = await Account.findOne({email: req.params.email})
+    console.log(typeof account)
+    res.send(account)
+})
+
 router.get("/", async (req, res) => {
     
     const {email, password} = req.body // Pega as infos do formulario reactjs
