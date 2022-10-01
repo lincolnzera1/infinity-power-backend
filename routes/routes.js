@@ -25,7 +25,13 @@ router.post("/", async (req, res) => {
 router.get("/:email", async (req, res) => {
     console.log("aqui aqui aqui: " + req.params.email)
     const account = await Account.findOne({email: req.params.email})    
-    res.send(account)
+    if(account){
+        console.log('deu certo')
+        res.send(account)
+    }else{
+        console.log('not today')
+        res.send('not today')
+    }
 })
 
 router.get("/", async (req, res) => {
