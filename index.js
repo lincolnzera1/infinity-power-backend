@@ -25,6 +25,7 @@ app.use('/accounts', routes)
 
 
 app.use("/", (req, res) => {
+    console.log("right")
     res.send("Wellcome again my friend.")
  }) 
 
