@@ -31,7 +31,7 @@ app.use("/", (req, res) => {
 
 
 mongoose.connect(mongoUrl).then(() => {
-    app.listen(3000, () => console.log('Everything is all right my master'))
+    app.listen( process.env.PORT, () => console.log('Everything is all right my master'))
 }).catch((erro) => {
     console.log("O Erro foi: " + erro)
 })
