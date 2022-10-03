@@ -49,7 +49,7 @@ router.get("/:data", async (req, res) => {
         }
         
     } catch (error) {
-        console.log("An error happened, and the account can't be created.")
+        console.log("An error happened =/, and the account can't be created.")
         res.send("2")
     }
     
