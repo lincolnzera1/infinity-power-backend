@@ -28,25 +28,27 @@ router.post("/", async (req, res) => {
 router.get("/:data", async (req, res) => {
     console.log("aqui aqui aqui: " + req.params.data)
 
-    const data = req.params.data
+    // const data = req.params.data
+
+    const data = 0
 
     const espData = {
         data
     }
-    const espdatas = await EspData.findOne({data: "0"}) 
+    const espdatas = await EspData.findOne({data: 0})
 
     try {
            
         if(espdatas){
             console.log('Parametro indica que ja existe tais resultados no mongodb')
 
-            await EspData.findOneAndUpdate({data: req.params.data},)
+            //await EspData.findOneAndUpdate({data: 0})
 
             res.send("Parametro indica que ja existe tais resultados no mongodb: " + espdatas)
             
         }else{
             console.log('not today')
-            await EspData.create({data: "0"})
+            await EspData.create({data: 0, })
             console.log("Account created")
             res.send('Account created')
         }
