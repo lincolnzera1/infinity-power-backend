@@ -64,9 +64,9 @@ router.get("/", async (req, res) => {
     
     const {email, password} = req.body // Pega as infos do formulario reactjs
 
-    const accounts = await Account.find() // Procura pelo email que vai chegar do (nao mais)
+    const esp = await EspData.find() // Procura pelo email que vai chegar do (nao mais)
                                                             // formulario react.
-    res.json(accounts)
+    res.json(esp)
 })
 
 module.exports = router
