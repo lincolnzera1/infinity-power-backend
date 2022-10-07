@@ -46,7 +46,7 @@ router.get("/:data", async (req, res) => {
             
         }else{
             console.log('not today')
-            await EspData.create(espData)
+            await EspData.create({data: "0"})
             console.log("Account created")
             res.send('Account created')
         }
