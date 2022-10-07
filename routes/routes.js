@@ -33,7 +33,7 @@ router.get("/:data", async (req, res) => {
     const espData = {
         data
     }
-    const espdatas = await EspData.findOne({data: "8083"}) 
+    const espdatas = await EspData.findOne({data: "0"}) 
 
     try {
            
