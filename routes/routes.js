@@ -33,13 +33,16 @@ router.get("/:data", async (req, res) => {
     const espData = {
         data
     }
-    const espdatas = await EspData.findOne({data: req.params.data}) 
+    const espdatas = await EspData.findOne({data: "8083"}) 
 
     try {
            
         if(espdatas){
             console.log('Parametro indica que ja existe tais resultados no mongodb')
-            res.send("Parametro indica que ja existe tais resultados no mongodb")
+
+            await EspData.findOneAndUpdate({data: req.params.data},)
+
+            res.send("Parametro indica que ja existe tais resultados no mongodb: " + espdatas)
             
         }else{
             console.log('not today')
