@@ -35,12 +35,12 @@ router.get("/:data", async (req, res) => {
     const espData = {
         data
     }
-    const espdatas = await EspData.findOne({data: 0})
+    const espdatas = await EspData.findOne({data: 1})
 
     try {
            
         if(espdatas){
-            console.log('Parametro indica que ja existe tais resultados no mongodb')
+            console.log('Parametro indica que ja existe tais resultados no mongodb .')
 
             //await EspData.findOneAndUpdate({data: 0})
 
@@ -48,7 +48,7 @@ router.get("/:data", async (req, res) => {
             
         }else{
             console.log('not today')
-            await EspData.create({data: 0, })
+            await EspData.create({data: 1, })
             console.log("Account created")
             res.send('Account created')
         }
