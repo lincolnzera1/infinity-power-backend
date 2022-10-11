@@ -37,7 +37,7 @@ router.get("/:data", async (req, res) => {
     }
 
     console.log("O espdata corresponde a: " + espData)
-    const espdatas = await EspData.findOne({espData})
+    const espdatas = await EspData.findOne({data: data})
 
     try {
            
@@ -50,9 +50,10 @@ router.get("/:data", async (req, res) => {
             
         }else{
             console.log('not today')
-            await EspData.create({data: 1, })
+            await EspData.create({data: data, })
+            console.log("O espdata corresponde a: " + espData)
             console.log("Account created")
-            res.send('Account created')
+            res.send('Account created: ' + espData.data)
         }
         
     } catch (error) {
