@@ -28,14 +28,16 @@ router.post("/", async (req, res) => {
 router.get("/:data", async (req, res) => {
     console.log("aqui aqui aqui: " + req.params.data)
 
-    // const data = req.params.data
+    const data = req.params.data
 
-    const data = 0
+    //const data = 0
 
     const espData = {
         data
     }
-    const espdatas = await EspData.findOne({data: 1})
+
+    console.log("O espdata corresponde a: " + espData)
+    const espdatas = await EspData.findOne({espData})
 
     try {
            
