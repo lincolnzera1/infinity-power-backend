@@ -29,11 +29,12 @@ router.get("/:data", async (req, res) => {
     console.log("aqui aqui aqui: " + req.params.data)
 
     const data = req.params.data
-
+    const dia = new Date().getDate().toString()
     //const data = 0
 
     const espData = {
-        data
+        data,
+        dia: 14
     }
 
     console.log("O espdata corresponde a: " + espData)
@@ -49,11 +50,10 @@ router.get("/:data", async (req, res) => {
             res.send("Parametro indica que ja existe tais resultados no mongodb: " + espdatas)
             
         }else{
-            console.log('not today')
-            await EspData.create({data: data, })
+            await EspData.create(espData)
             console.log("O espdata corresponde a: " + espData)
             console.log("Account created")
-            res.send('Account created: ' + espData.data)
+            res.send('Account created: ' + Object.values(espData))
         }
         
     } catch (error) {
