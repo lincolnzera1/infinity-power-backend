@@ -30,11 +30,20 @@ router.get("/:data", async (req, res) => {
 
     const data = req.params.data
     const dia = new Date().getDate().toString()
+    const mes = new Date().getMonth().toString()
+
+    var meses = [
+        "Janeiro","Fevereiro","Março","Abril","Maio","Junho",
+        "Julho","Agosto",
+        "Setembro","Outubro",
+        "Novembro","Dezembro"
+      ];
     //const data = 0
 
     const espData = {
         data,
-        dia: 14
+        dia,
+        mes: meses[mes]
     }
 
     console.log("O espdata corresponde a: " + espData)
@@ -51,7 +60,7 @@ router.get("/:data", async (req, res) => {
             
         }else{
             await EspData.create(espData)
-            console.log("O espdata corresponde a: " + espData)
+            console.log("O espdata corresponde a: " + meses[mes])
             console.log("Account created")
             res.send('Account created: ' + Object.values(espData))
         }
