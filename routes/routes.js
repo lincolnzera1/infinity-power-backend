@@ -5,6 +5,9 @@ const router = express.Router()
 const Account = require('../models/account')
 const EspData = require('../models/espData')
 
+// ShortId
+const short = require('shortid');
+
 
 router.post("/", async (req, res) => {
     const {email, password, name} = req.body
@@ -37,17 +40,18 @@ router.get("/:data", async (req, res) => {
         "Julho","Agosto",
         "Setembro","Outubro",
         "Novembro","Dezembro"
-      ];
+    ];
     //const data = 0
 
     const espData = {
+        identificacao: "esp1",
         data,
-        dia,
+        dia: 11,
         mes: meses[mes]
     }
 
     console.log("O espdata corresponde a: " + espData)
-    const espdatas = await EspData.findOne({data: data})
+    const espdatas = await EspData.find({identificacao: data})
 
     try {
            
@@ -56,7 +60,7 @@ router.get("/:data", async (req, res) => {
 
             //await EspData.findOneAndUpdate({data: 0})
 
-            res.send("Parametro indica que ja existe tais resultados no mongodb: " + espdatas)
+            res.send(espdatas)
             
         }else{
             await EspData.create(espData)
