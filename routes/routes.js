@@ -41,6 +41,7 @@ router.get("/:data", async (req, res) => {
     //const data = 0
 
     const espData = {
+        identificacao: "esp3",
         data,
         dia,
         mes: meses[mes]
@@ -51,17 +52,17 @@ router.get("/:data", async (req, res) => {
 
     try {
            
-        if(espdatas){
-            console.log('Parametro indica que ja existe tais resultados no mongodb .')
+        if(espdatas){            
+            console.log('Parametro indica que ja existe tais resultados no mongodb.')
 
             //await EspData.findOneAndUpdate({data: 0})
             await EspData.create(espData)
             console.log("O espdata corresponde a: " + meses[mes])
             console.log("Account created")
-            res.send('Account created: ' + Object.values(espData))
+            // res.send('Account created: ' + Object.values(espData))
 
             res.send("Parametro indica que ja existe tais resultados no mongodb: " + espdatas)
-            
+
         }else{
             await EspData.create(espData)
             console.log("O espdata corresponde a: " + meses[mes])
