@@ -23,8 +23,6 @@ app.use('/register', routes)
 app.use('/accounts', routes)
 app.use('/teste', routes)
 
-
-
 app.use("/", (req, res) => {
     res.send("Wellcome again my friend.")
  }) 
